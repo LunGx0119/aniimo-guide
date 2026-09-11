@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="伊莫 Aniimo 繁中圖鑑與攻略：查元素、定位、棲息地、進化與聯結探索能力。" />
+    <title>伊莫 Aniimo 攻略圖鑑</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="返回伊莫攻略首頁">
+          <span class="brand-mark">✦</span>
+          <span><strong>ANIIMO</strong><small>伊莫攻略圖鑑</small></span>
+        </a>
+        <nav class="nav-links" aria-label="主要導覽">
+          <a class="active" href="#dex">圖鑑</a>
+          <a href="#teams">配隊攻略</a>
+          <a href="#starter">新手先看</a>
+          <a href="#sources">資料來源</a>
+        </nav>
+        <div class="launch-chip"><span class="status-dot"></span> PC／主機 09.16</div>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">伊甸大陸野外指南 <span>·</span> 資料版 0.2</p>
+            <h1 id="hero-title">先查清楚，<br /><em>再去抓一隻。</em></h1>
+            <p class="hero-text">把伊莫的元素、定位、棲息地和聯結能力整理在同一張地圖上。開服前先認識值得追的夥伴，開服後再用實測資料更新每一條路線。</p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="#dex">開始查圖鑑 <span>↗</span></a>
+              <a class="text-btn" href="#starter">看新手重點 <span>→</span></a>
+            </div>
+            <div class="hero-metrics" aria-label="資料概覽">
+              <div><strong>94</strong><span>官方索引條目</span></div>
+              <div><strong>9</strong><span>元素</span></div>
+              <div><strong>5</strong><span>戰鬥定位</span></div>
+            </div>
+          </div>
+          <div class="hero-art" role="img" aria-label="伊莫官方世界宣傳圖">
+            <div class="art-glow"></div>
+            <div class="art-card">
+              <span class="art-kicker">野外筆記 001</span>
+              <span class="art-title">世界<br /><b>充滿生命。</b></span>
+              <span class="art-caption">艾德爾大陸 · 6 個公開區域</span>
+            </div>
+            <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          </div>
+        </section>
+
+        <section class="section-block" id="dex" aria-labelledby="dex-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">伊莫索引 / 圖鑑</p>
+              <h2 id="dex-title">伊莫圖鑑</h2>
+            </div>
+            <p class="heading-note">先用用途找夥伴，再回頭研究進化。<br />每張卡片都標示目前可核實的資料。</p>
+          </div>
+
+          <div class="toolbar" role="search">
+            <label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="搜尋名稱，例如 燼火幼犬" autocomplete="off" /><kbd>/</kbd></label>
+            <div class="filter-group" aria-label="元素篩選">
+              <span class="filter-label">元素</span>
+              <button class="filter-pill selected" data-element="all">全部</button>
+              <button class="filter-pill" data-element="fire">火</button>
+              <button class="filter-pill" data-element="water">水</button>
+              <button class="filter-pill" data-element="wind">風</button>
+              <button class="filter-pill" data-element="grass">草</button>
+              <button class="filter-pill" data-element="ice">冰</button>
+              <button class="filter-pill" data-element="dark">暗</button>
+              <button class="filter-pill" data-element="electric">電</button>
+              <button class="filter-pill" data-element="rock">岩</button>
+              <button class="filter-pill" data-element="holy">聖</button>
+            </div>
+            <div class="filter-group role-filters" aria-label="定位篩選">
+              <span class="filter-label">定位</span>
+              <button class="filter-pill" data-role="DPS">輸出</button>
+              <button class="filter-pill" data-role="Support">支援</button>
+              <button class="filter-pill" data-role="Heal">治療</button>
+              <button class="filter-pill" data-role="BREAK">破防</button>
+              <button class="filter-pill" data-role="REGEN">回能</button>
+            </div>
+          </div>
+
+          <div class="results-line"><span id="result-count">顯示 94 / 94 個條目</span><span class="result-source">官方索引持續更新中 <span>↗</span></span></div>
+          <div id="creature-grid" class="creature-grid" aria-live="polite"></div>
+          <div id="empty-state" class="empty-state" hidden><span>◌</span><h3>找不到相符的伊莫</h3><p>試試繁中名稱、技能關鍵字、元素，或清除篩選。</p><button id="clear-filters" class="text-btn">清除篩選 →</button></div>
+          <div class="catalog-footer"><span>官方索引共 94 個條目 · 圖片、技能、進化資料同步整理</span><a href="https://wiki.aniimo.com/" target="_blank" rel="noreferrer">開啟官方圖鑑 ↗</a></div>
+        </section>
+
+        <section class="split-section" id="starter">
+          <article class="guide-card featured-guide">
+            <div class="guide-label"><span class="number">01</span><span>新手開荒</span></div>
+            <h2>第一隊，先解決<br /><em>你眼前的問題。</em></h2>
+            <p>初期不用急著追求「永遠最強」。先確保隊伍有輸出、破防、回復，再用第四格補一種元素或移動能力。</p>
+            <div class="team-row"><span class="team-role damage">輸出</span><span class="team-role break">破防</span><span class="team-role sustain">續航</span><span class="team-role flex">彈性位</span></div>
+            <a class="arrow-link" href="#dex">從定位開始選 →</a>
+          </article>
+          <article class="guide-card twine-guide" id="world">
+            <div class="guide-label"><span class="number">02</span><span>聯結循環</span></div>
+            <h2>聯結不只是坐騎，<br /><em>是另一個你。</em></h2>
+            <p>與持有的伊莫聯結後，你會直接使用牠的移動與技能。奔跑、飛行、鑽地和戰鬥，都是「選哪一隻」的結果。</p>
+            <div class="twine-list"><span><i>01</i>選擇夥伴</span><span><i>02</i>聯結</span><span><i>03</i>用牠的方式看世界</span></div>
+            <a class="arrow-link" href="https://store.steampowered.com/app/4126040/Aniimo/" target="_blank" rel="noreferrer">看官方玩法說明 →</a>
+          </article>
+        </section>
+
+        <section class="teams-section" id="teams" aria-labelledby="teams-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">初期配隊筆記</p><h2 id="teams-title">初期配隊，<br /><em>先求能打順。</em></h2></div>
+            <p class="heading-note">目前公開攻略多數來自測試版。<br />以下按「角色分工＋可驗證技能」整理。</p>
+          </div>
+          <div class="team-grid">
+            <article class="team-card team-card-featured">
+              <div class="team-index">01 <span>開荒穩定隊</span></div>
+              <h3>破防 → 輸出 → 治療</h3>
+              <p>第一次探索新區域，最穩定的節奏。洛奇用「彈跳投擲」令敵人承受更多破防傷害，星輝狐在破防窗內遠程收割；螢羽蝶解除負面並持續治療，回聲狐用弱點標記降低暴擊抗性。四個位置互相補足，失誤成本最低。</p>
+              <div class="team-avatars">
+                <button class="mini-avatar" data-member="064" style="--accent:#7768c5"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10027.png" alt="洛奇" loading="lazy"><b>洛奇</b><small>破防</small></button>
+                <button class="mini-avatar" data-member="006" style="--accent:#5d56a9"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10012.png" alt="星輝狐" loading="lazy"><b>星輝狐</b><small>輸出</small></button>
+                <button class="mini-avatar" data-member="029" style="--accent:#65b9cf"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10231.png" alt="螢羽蝶" loading="lazy"><b>螢羽蝶</b><small>治療</small></button>
+                <button class="mini-avatar" data-member="033" style="--accent:#66b9cc"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10443.png" alt="回聲狐" loading="lazy"><b>回聲狐</b><small>支援</small></button>
+              </div>
+              <div class="team-note"><strong>適合：</strong>主線、首次打精英、未摸熟招式前的安全選擇。</div>
+            </article>
+            <article class="team-card">
+              <div class="team-index">02 <span>暗印爆發隊</span></div>
+              <h3>標記 → 減抗 → 爆發</h3>
+              <p>香氛靈先用「香氣標記」令暗屬普攻傷害提高 25%，再用香氣炸彈提升全隊暗傷；洛奇打開破防窗，星輝狐以追蹤星星疊加傷害增益，小巫靈每次技能回復能量。適合研究暗屬連段與高上限爆發。</p>
+              <div class="team-avatars">
+                <button class="mini-avatar" data-member="064" style="--accent:#7768c5"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10027.png" alt="洛奇" loading="lazy"><b>洛奇</b><small>破防</small></button>
+                <button class="mini-avatar" data-member="041" style="--accent:#cd7bb4"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10352.png" alt="香氛靈" loading="lazy"><b>香氛靈</b><small>減抗</small></button>
+                <button class="mini-avatar" data-member="006" style="--accent:#5d56a9"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10012.png" alt="星輝狐" loading="lazy"><b>星輝狐</b><small>輸出</small></button>
+                <button class="mini-avatar" data-member="022" style="--accent:#7768c5"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10203.png" alt="小巫靈" loading="lazy"><b>小巫靈</b><small>回能</small></button>
+              </div>
+              <div class="team-note warning"><strong>注意：</strong>偏測試版高上限，未熟悉破防與標記時會比穩定隊難用。</div>
+            </article>
+            <article class="team-card">
+              <div class="team-index">03 <span>初見探索隊</span></div>
+              <h3>跑圖 + 遠程 + 回復</h3>
+              <p>未開齊高階區域前，燼火幼犬負責疾走跑圖，星穹處理遠程輸出與高低差，螢羽蝶保證續航；第四格按當區弱點換人。這隊不追求最高傷害，主打探索效率與容錯。</p>
+              <div class="team-avatars">
+                <button class="mini-avatar" data-member="001" style="--accent:#f06d4c"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10051.png" alt="燼火幼犬" loading="lazy"><b>燼火幼犬</b><small>跑圖</small></button>
+                <button class="mini-avatar" data-member="005" style="--accent:#5d56a9"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10011.png" alt="星穹" loading="lazy"><b>星穹</b><small>遠程</small></button>
+                <button class="mini-avatar" data-member="029" style="--accent:#65b9cf"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10231.png" alt="螢羽蝶" loading="lazy"><b>螢羽蝶</b><small>治療</small></button>
+                <button class="mini-avatar plus-avatar" aria-label="加入當區克制元素">＋</button>
+              </div>
+              <div class="team-note"><strong>適合：</strong>填圖鑑、追蛋、找稀有天氣與第一次進新區域。</div>
+            </article>
+            <article class="team-card">
+              <div class="team-index">04 <span>火焰燃燒隊</span></div>
+              <h3>燃燒 → 破防 → 回能</h3>
+              <p>焰毛犬以火焰箭疊加火焰減益，因弗盧帕的靈魂技能可按層數提升破防效率，閃奇遠程補火力並保持能量循環，霜晶用全隊治療及增傷光球穩住戰線。敵人怕火時特別舒服。</p>
+              <div class="team-avatars">
+                <button class="mini-avatar" data-member="002" style="--accent:#ef8150"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10052.png" alt="焰毛犬" loading="lazy"><b>焰毛犬</b><small>輸出</small></button>
+                <button class="mini-avatar" data-member="004" style="--accent:#7768c5"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10055.png" alt="因弗盧帕" loading="lazy"><b>因弗盧帕</b><small>破防</small></button>
+                <button class="mini-avatar" data-member="027" style="--accent:#e4b43c"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10331.png" alt="閃奇" loading="lazy"><b>閃奇</b><small>回能</small></button>
+                <button class="mini-avatar" data-member="016" style="--accent:#6daee8"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10043.png" alt="霜晶" loading="lazy"><b>霜晶</b><small>治療</small></button>
+              </div>
+              <div class="team-note"><strong>核心優勢：</strong>火焰減益、破防效率與治療增傷同時運作，適合打弱火精英。</div>
+            </article>
+            <article class="team-card">
+              <div class="team-index">05 <span>草風續航隊</span></div>
+              <h3>草地 → 回能 → 淨化</h3>
+              <p>葉芽在腳下建立草地，讓草屬隊友持續回能量及生命；啾啾用「行軍」提供移動系增益，螢羽蝶負責治療與解除負面，回聲狐補弱點標記。長線戰鬥與跑圖都很穩。</p>
+              <div class="team-avatars">
+                <button class="mini-avatar" data-member="017" style="--accent:#65bd7c"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10045.png" alt="葉芽" loading="lazy"><b>葉芽</b><small>回能</small></button>
+                <button class="mini-avatar" data-member="007" style="--accent:#6bb9d0"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10181.png" alt="啾啾" loading="lazy"><b>啾啾</b><small>支援</small></button>
+                <button class="mini-avatar" data-member="029" style="--accent:#65b9cf"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10231.png" alt="螢羽蝶" loading="lazy"><b>螢羽蝶</b><small>治療</small></button>
+                <button class="mini-avatar" data-member="033" style="--accent:#66b9cc"><img src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10443.png" alt="回聲狐" loading="lazy"><b>回聲狐</b><small>支援</small></button>
+              </div>
+              <div class="team-note"><strong>核心優勢：</strong>草地效果只要維持就能同時解決能量與續航，遇到多段負面效果時特別有價值。</div>
+            </article>
+          </div>
+          <p class="team-footnote">配隊原則：開荒至少保留 1 隻破防、1 隻主輸出、1 個治療或回能；第四格按敵人弱點、移動能力與技能協同替換。以上組合以官方技能描述推導，正式版數值更新後再調整。</p>
+        </section>
+
+        <section class="source-strip" id="sources">
+          <div><p class="eyebrow">資料整理</p><h2>資料先求可核實，<br />再求寫得漂亮。</h2></div>
+          <div class="source-copy"><p>這個版本以官方網站、官方 Aniimo Wiki 和 Steam 商店頁作為主幹。野外座標、掉率、完整傷害公式等內容，等正式版與實測資料確認後再補上。</p><div class="source-links"><a href="https://www.aniimo.com/zh-tw/main" target="_blank" rel="noreferrer">官方網站 ↗</a><a href="https://wiki.aniimo.com/" target="_blank" rel="noreferrer">官方圖鑑 ↗</a><a href="https://store.steampowered.com/app/4126040/Aniimo/" target="_blank" rel="noreferrer">Steam 玩法 ↗</a></div></div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>ANIIMO / 伊莫攻略圖鑑</span><span>資料整理版 · 2026.09</span></footer>
+    </div>
+
+    <dialog id="detail-dialog" class="detail-dialog">
+      <button class="close-dialog" aria-label="關閉詳情">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="返回頁首"><span>↑</span><small>頂部</small></button>
+    <script src="aniimo-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
